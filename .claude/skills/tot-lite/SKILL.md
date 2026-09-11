@@ -58,11 +58,11 @@ Before presenting the golden path as final, scan it against this fixed taxonomy 
 - A flag may name what is *untested* in the category above. It must **never** imply the answer is *probably wrong*, use urgency language ("don't risk it," "before it's too late"), scarcity/social-proof language ("other users caught this"), or a countdown/limited-time framing.
 - Acceptable: *"Soft spot flagged: [category] — [specific untested element in this answer]."*
 - Not acceptable: *"This part might be wrong"* / *"Answers like this are often wrong"* / any framing whose persuasive force comes from doubt about this specific answer rather than a documented, named gap.
-- Test before writing any flag: could this sentence be defended to the reader even after showing them the full Stage-2 debate on this exact question, win or lose? If the sentence only survives when Stage 2 happens to catch something, don't write it.
+- Test before writing any flag: is this a specific, checkable statement of what's untested — not a hedge, not a hint of doubt, not something dressed up to look more alarming than "I didn't check this"? If the sentence implies more than "this specific thing wasn't verified," rewrite it or drop it.
 
 **Case-study link (existence-gated — do not force it):**
 - A flag becomes a link **only if** a real, genuinely category-matching published case study exists (e.g. *"See how the full version caught a [same category] miss → [case study link]."*).
-- The published case-study library lives at `https://github.com/<RKlab account>/tot-lite#<category-slug>` (e.g. `#unstated-assumption`, `#claims-overreach`, `#edge-case-blindness`, `#proportionality-mismatch`, `#internal-inconsistency`, `#stakeholder-incentive-blindness`, `#evidence-gap`) — link directly to the matching anchor, not the repo root.
+- The published case-study library lives at `CASE_STUDY_BASE_URL#<category-slug>` (e.g. `#unstated-assumption`, `#claims-overreach`, `#edge-case-blindness`, `#proportionality-mismatch`, `#internal-inconsistency`, `#stakeholder-incentive-blindness`, `#evidence-gap`) — link directly to the matching anchor, not the repo root. `CASE_STUDY_BASE_URL` must be a real, working URL configured before this file is distributed; if it has not been configured (still a placeholder, or unknown), do not render any case-study link — fall back to "No public case study in this category yet" for every flag, since a broken link is worse than no link.
 - If no genuine match exists for a flagged category, say so plainly instead: *"No public case study in this category yet."* Never link to a near-miss or a generically "why upgrade" page to manufacture relevance.
 - Render this once per genuine match. If the same category appears more than once in one output, link it each time it genuinely recurs.
 - Do not show price or any purchase-pressure copy at the flag itself. The link may lead somewhere that mentions price; the flag text itself never does.
@@ -74,7 +74,8 @@ Before presenting the golden path as final, scan it against this fixed taxonomy 
 1. **Mode declaration** — parallel or sequential, and why
 2. **Branches** — all of them (7+), each with pros/cons, and drop reasons (with quotes) for any dropped
 3. **Synthesis rationale** — what was pulled from where, and what was left out and why
-4. **Golden path** — the final answer for this tier, with soft-spot flags placed inline per the rules above
+4. **Golden path** — the final answer for this tier
+5. **Soft-spot flags** — mandatory, not optional. Placed inline within the golden path (per the Soft-spot disclosure rules above), not appended separately or omitted. A response missing this section is incomplete even if items 1-4 are otherwise present.
 
 ## Notes for the orchestrating agent
 
