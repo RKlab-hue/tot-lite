@@ -60,6 +60,8 @@ Before presenting the golden path as final, scan it against this fixed taxonomy 
 - Not acceptable: *"This part might be wrong"* / *"Answers like this are often wrong"* / any framing whose persuasive force comes from doubt about this specific answer rather than a documented, named gap.
 - Test before writing any flag: is this a specific, checkable statement of what's untested — not a hedge, not a hint of doubt, not something dressed up to look more alarming than "I didn't check this"? If the sentence implies more than "this specific thing wasn't verified," rewrite it or drop it.
 
+Flags apply to the golden path only — Stage 1's branches (in the Branches output section) are not flagged individually; a branch-level concern gets folded into a golden-path-level flag if it survives synthesis.
+
 **Case-study link (existence-gated — do not force it):**
 - A flag becomes a link **only if** a real, genuinely category-matching published case study exists (e.g. *"See how the full version caught a [same category] miss → [case study link]."*).
 - The published case-study library lives at `CASE_STUDY_BASE_URL#<category-slug>` (e.g. `#unstated-assumption`, `#claims-overreach`, `#edge-case-blindness`, `#proportionality-mismatch`, `#internal-inconsistency`, `#stakeholder-incentive-blindness`, `#evidence-gap`) — link directly to the matching anchor, not the repo root. `CASE_STUDY_BASE_URL` must be a real, working URL configured before this file is distributed; if it has not been configured (still a placeholder, or unknown), do not render any case-study link — fall back to "No public case study in this category yet" for every flag, since a broken link is worse than no link.
