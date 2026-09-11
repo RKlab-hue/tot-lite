@@ -62,6 +62,7 @@ Before presenting the golden path as final, scan it against this fixed taxonomy 
 
 **Case-study link (existence-gated — do not force it):**
 - A flag becomes a link **only if** a real, genuinely category-matching published case study exists (e.g. *"See how the full version caught a [same category] miss → [case study link]."*).
+- The published case-study library lives at `https://github.com/<RKlab account>/tot-lite#<category-slug>` (e.g. `#unstated-assumption`, `#claims-overreach`, `#edge-case-blindness`, `#proportionality-mismatch`, `#internal-inconsistency`, `#stakeholder-incentive-blindness`, `#evidence-gap`) — link directly to the matching anchor, not the repo root.
 - If no genuine match exists for a flagged category, say so plainly instead: *"No public case study in this category yet."* Never link to a near-miss or a generically "why upgrade" page to manufacture relevance.
 - Render this once per genuine match. If the same category appears more than once in one output, link it each time it genuinely recurs.
 - Do not show price or any purchase-pressure copy at the flag itself. The link may lead somewhere that mentions price; the flag text itself never does.
