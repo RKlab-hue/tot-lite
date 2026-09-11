@@ -1,6 +1,6 @@
 ---
 name: "tot-lite"
-description: "Free lite tier of /tot. Tree of Thought only (at least 7 distinct branches → evaluate → synthesize → golden path) — the adversarial 'Robots Fight' debate stage is not included in this tier. Use for architecture decisions, hard debugging, irreversible calls, security-sensitive design, or research synthesis where a single-pass exploration is enough. For a result pressure-tested by 3 adversarial personas across 3 rubric-weighted rounds before finalizing, see /tot (full version)."
+description: "Free lite tier of /tot. Tree of Thought only (complexity-adaptive branch count → evaluate → synthesize → golden path), with a fact-checking/citation discipline for load-bearing claims — the adversarial 'Robots Fight' debate stage is not included in this tier. Use for architecture decisions, hard debugging, irreversible calls, security-sensitive design, or research synthesis where a single-pass exploration is enough. For a result pressure-tested by 2-7 adversarial personas (expanding with contrarian perspectives on fast convergence) across 3+ rubric-weighted rounds before finalizing, see /tot (full version)."
 ---
 
 # ToT Lite
@@ -18,12 +18,21 @@ This skill runs differently depending on what the current environment actually s
 - **Parallel mode** (Agent/subagent tool with background execution is available — e.g. Claude Code, Cowork): every branch is a real, independent subagent call, batched so they run concurrently. Preferred whenever available.
 - **Sequential mode** (no subagent tool, or a single-session environment like claude.ai): simulate independence deliberately — generate each branch in its own clearly-delimited pass, explicitly discarding/ignoring earlier passes' content while writing the next one. Say so plainly in the output ("running in sequential mode — branches are simulated independently, not truly concurrent") rather than implying subagents ran when they didn't.
 
+## Fact-checking & citations
+
+Treat this like evidence in a debate or court proceeding: a claim earns trust by being checkable, not by being stated confidently. This applies to branches and the golden path alike.
+
+- A claim is **load-bearing and externally verifiable** if it asserts a fact about the world outside this reasoning process (a law, a technical spec, a historical event, a statistic, what a tool/library actually does) — as opposed to a judgment call or tradeoff assessment, which cannot be "cited" and shouldn't pretend to be.
+- If a search/fetch tool is available in this environment: use it to find a real source for load-bearing claims that materially affect the conclusion, and cite it.
+- If no such tool is available, or a claim can't be verified even with one: state it as **"unverified — no citation available"** plainly next to it, rather than presenting it with unearned confidence.
+- Never fabricate a citation or a source. An honest "unverified" beats an invented-sounding reference every time.
+
 ## Tree of Thought
 
 ### 1. Branch generation
-Produce **at least 7 distinct branches** (more is fine if the problem space genuinely supports it — don't pad with near-duplicates just to hit a number). Each branch is a self-contained solution/approach built around one genuinely different core idea or mechanism. In parallel mode, spawn one subagent per branch with only the original prompt. In sequential mode, generate each branch in its own pass per the independence discipline above.
+Before generating branches, judge the problem's actual scope: how many genuinely distinct core mechanisms/approaches does this specific problem support? Produce that many branches — **complexity-adaptive, not a fixed count** (a narrow problem might genuinely support only 4-5; a genuinely open-ended one may support 10+). Never pad with near-duplicates to hit a number, and never force a narrow problem down to fewer branches than it actually supports. State the branch count and a one-line justification before generating them. Each branch is a self-contained solution/approach built around one genuinely different core idea or mechanism. In parallel mode, spawn one subagent per branch with only the original prompt. In sequential mode, generate each branch in its own pass per the independence discipline above.
 
-Before finalizing the branch set, sanity-check spread: if two branches are really the same mechanism with different names, replace one of them with a genuinely different approach.
+Before finalizing the branch set, sanity-check spread: if two branches are really the same mechanism with different names, replace one of them with a genuinely different approach. If this drops the count below the stated justification, generate one more genuinely distinct branch rather than silently shipping fewer than announced.
 
 ### 2. Evaluate
 For each branch, write explicit pros and cons. Do not skip weak branches — a branch's cons are what make synthesis possible.
@@ -74,13 +83,15 @@ Flags apply to the golden path only — Stage 1's branches (in the Branches outp
 ## Output format
 
 1. **Mode declaration** — parallel or sequential, and why
-2. **Branches** — all of them (7+), each with pros/cons, and drop reasons (with quotes) for any dropped
+2. **Branches** — all of them, with the stated count/justification from step 1, each with pros/cons, and drop reasons (with quotes) for any dropped
 3. **Synthesis rationale** — what was pulled from where, and what was left out and why
-4. **Golden path** — the final answer for this tier
+4. **Golden path** — the final answer for this tier, with load-bearing claims marked per the Fact-checking & citations section
 5. **Soft-spot flags** — mandatory, not optional. Placed inline within the golden path (per the Soft-spot disclosure rules above), not appended separately or omitted. A response missing this section is incomplete even if items 1-4 are otherwise present.
 
 ## Notes for the orchestrating agent
 
 - This tier has no Stage 2. Do not run, simulate, or reference a debate having occurred — the golden path above is the unrevised, single-pass result.
 - Soft-spot flags are generated fresh from this specific answer's actual content each run — never templated or reused boilerplate ("this might have edge cases" with no specifics is not a valid flag).
+- Branch count is complexity-adaptive now — don't default back to a fixed number out of habit; actually judge each run's problem scope.
+- Apply the Fact-checking & citations discipline to branches too, not just the golden path.
 - This skill file has no external dependencies — copying it into `.claude/skills/tot-lite/SKILL.md` (or an equivalent skills directory on another platform) is sufficient to make it available there.
