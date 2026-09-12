@@ -2,9 +2,9 @@
 
 The free tier of **`/tot`** — a Claude Code skill for deep, adversarially-tested reasoning on high-stakes prompts.
 
-`tot-lite` runs **Stage 1 only**: a Tree of Thought pass — at least 7 distinct branches, each evaluated, then synthesized into one "golden path." Full quality, nothing shortened or simplified for this tier.
+`tot-lite` runs **Stage 1 only**: a Tree of Thought pass — a complexity-adaptive number of distinct branches (judged per problem, not a fixed count), each evaluated, then synthesized into one "golden path," with a fact-checking/citation discipline for any load-bearing claim. Full quality, nothing shortened or simplified for this tier.
 
-It does **not** run Stage 2 ("Robots Fight" — a 3-persona adversarial debate that pressure-tests the golden path across 3 rubric-weighted rounds and revises it before finalizing). That's in the full paid version, **`/tot`** (RKlab).
+It does **not** run Stage 2 ("Robots Fight" — a 2-7-persona adversarial debate, expanding with a deliberate contrarian perspective if the debate converges too fast, that pressure-tests the golden path across 3+ rubric-weighted rounds and revises it before finalizing). That's in the full paid version, **`/tot`** (RKlab).
 
 ## Install
 
