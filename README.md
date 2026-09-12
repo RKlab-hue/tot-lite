@@ -52,7 +52,7 @@ A refund policy said "all sales final" as if that settled the matter. Robots Fig
 
 ## Full version
 
-`/tot` (paid, one-time purchase) adds the Robots Fight adversarial-debate stage — see [link to Gumroad listing] for the full version.
+`/tot` (paid, one-time purchase) adds the Robots Fight adversarial-debate stage — see [Gumroad listing link, once live] for the full version.
 
 ## License
 
